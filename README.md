@@ -35,7 +35,7 @@ It loads 5 days of production telemetry from **LILA BLACK** (1,243 Parquet files
 
 See **[WALKTHROUGH.md](WALKTHROUGH.md)** for a guided tour of every feature,
 **[ARCHITECTURE.md](ARCHITECTURE.md)** for how it works, and **[INSIGHTS.md](INSIGHTS.md)** for three
-things the data revealed.
+level-design edits the data points to.
 
 ## Tech stack
 
