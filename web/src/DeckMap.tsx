@@ -118,7 +118,7 @@ export default function DeckMap(props: Props) {
     });
   }, [events, eventToggles, playing, currentTime, maxTime]);
 
-  // live "heads" — interpolated current position of each journey during playback
+  // live "heads" - interpolated current position of each journey during playback
   const heads = useMemo(() => {
     if (!(playing || currentTime < maxTime)) return [];
     const out: { xy: [number, number]; isBot: boolean; user: string }[] = [];
@@ -222,7 +222,7 @@ export default function DeckMap(props: Props) {
 
   // discrete events: an owner-colored ring (blue=human, pink=bot) under a
   // category glyph (kill/death/loot/storm). The ring makes it obvious *who* the
-  // event happened to — e.g. a bot's own death (BotKilled in a bot file) gets a
+  // event happened to - e.g. a bot's own death (BotKilled in a bot file) gets a
   // pink ring, not a human-looking marker.
   if (visibleEvents.length && !heatOnly) {
     layers.push(
@@ -256,7 +256,7 @@ export default function DeckMap(props: Props) {
     );
   }
 
-  // hotspot marker: ONLY the clicked cell — its catchment circle (circumscribes
+  // hotspot marker: ONLY the clicked cell - its catchment circle (circumscribes
   // the counted cell) + a numbered badge in the unique hotspot color.
   if (hotspotOverlay && hotspotOverlay.selected >= 0 && hotspotOverlay.cells[hotspotOverlay.selected]) {
     const ho = hotspotOverlay;

@@ -55,7 +55,6 @@ interface Props {
   setTrailMode: (t: TrailMode) => void;
   filteredCount: number;
   eventCount: number;
-  onResetView: () => void;
 }
 
 export default function Sidebar(p: Props) {
@@ -114,7 +113,7 @@ export default function Sidebar(p: Props) {
           ))}
         </select>
         {p.selectedMatch && (
-          <div className="match-info" title="kills & deaths count all combat in the match, including bot-vs-bot — this dataset is PvE-heavy, so most of these are humans/bots fighting bots, not each other">
+          <div className="match-info" title="kills & deaths count all combat in the match, including bot-vs-bot - this dataset is PvE-heavy, so most of these are humans/bots fighting bots, not each other">
             <b>{p.selectedMatch.players}</b> players ({p.selectedMatch.humans}h / {p.selectedMatch.bots}b) ·{" "}
             <b>{p.selectedMatch.loot}</b> loot · <b>{p.selectedMatch.kills}</b> kills · <b>{p.selectedMatch.deaths}</b> deaths
             {p.selectedMatch.storm ? <> · <b>{p.selectedMatch.storm}</b> storm</> : null} · {p.selectedMatch.dur}s
@@ -195,7 +194,6 @@ export default function Sidebar(p: Props) {
         <div className="showing">
           Showing <b>{p.filteredCount}</b> journeys · <b>{p.eventCount.toLocaleString()}</b> events
         </div>
-        <button className="ghost-btn" onClick={p.onResetView}>Reset view</button>
       </div>
     </aside>
   );

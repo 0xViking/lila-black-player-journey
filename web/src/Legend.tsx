@@ -3,11 +3,10 @@ import { EVENT_COLORS, EVENT_GLYPH, EVENT_LABEL, HUMAN_COLOR, BOT_COLOR } from "
 import type { EventCategory } from "./types";
 
 const rgba = (c: number[]) => `rgb(${c[0]},${c[1]},${c[2]})`;
-// Collapse by default on small screens so the legend never covers the map.
-const isNarrow = () => typeof window !== "undefined" && window.matchMedia("(max-width: 860px)").matches;
 
 export default function Legend() {
-  const [collapsed, setCollapsed] = useState(isNarrow);
+  const [collapsed, setCollapsed] = useState(true); // closed by default; click the header to open
+
   const toggle = () => setCollapsed((c) => !c);
   return (
     <div className={`legend ${collapsed ? "collapsed" : ""}`}>

@@ -1,5 +1,5 @@
 /* ============================================================================
-   LILA BLACK — Player Journey Explorer · tactical-HUD theme
+   LILA BLACK - Player Journey Explorer · tactical-HUD theme
    A level-design telemetry tool for a tactical extraction shooter.
    Identity: gunmetal stack + ORANGE #FF7A1A chrome accent (brackets, labels,
    LEDs, ticks, logo) with CYAN #38BDF8 kept strictly as the interactive/data
@@ -14,10 +14,10 @@
   --border-2: #3a4654;
   --text: #e6edf4;
   --muted: #8a97a6;
-  /* interactive / data accent — UNCHANGED (scrub, playhead, selection, human path) */
+  /* interactive / data accent - UNCHANGED (scrub, playhead, selection, human path) */
   --accent: #38bdf8;
   --accent-dim: #14384a;
-  /* studio HUD identity accent — chrome only, never a data color */
+  /* studio HUD identity accent - chrome only, never a data color */
   --hud: #ff7a1a;
   --hud-dim: #a8531a;
   --danger: #f87171;
@@ -103,7 +103,7 @@ body { background: var(--bg); color: var(--text); overflow: hidden; }
 .help-btn { width: 26px; height: 26px; border-radius: 3px; border: 1px solid var(--border-2); background: var(--panel-2); color: var(--muted); font-weight: 700; cursor: pointer; font-size: 14px; flex: 0 0 auto; }
 .help-btn:hover { color: var(--hud); border-color: var(--hud); }
 
-/* hamburger — mobile only */
+/* hamburger - mobile only */
 .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 4px; width: 34px; height: 30px; padding: 0 6px; background: var(--panel-2); border: 1px solid var(--border-2); border-radius: 3px; cursor: pointer; flex: 0 0 auto; }
 .nav-toggle span { display: block; height: 2px; background: var(--hud); transition: transform 0.18s, opacity 0.18s; }
 .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -194,14 +194,8 @@ body { background: var(--bg); color: var(--text); overflow: hidden; }
 .link-btn { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 11px; margin-left: 6px; padding: 0; }
 
 .sidebar-footer { margin-top: auto; padding-top: 14px; }
-.showing { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.showing { font-size: 12px; color: var(--muted); }
 .showing b { color: var(--text); }
-.ghost-btn {
-  width: 100%; background: var(--panel-2); color: var(--text); border: 1px solid var(--border-2);
-  border-radius: 3px; padding: 9px; cursor: pointer; font-size: 11px; font-weight: 600;
-  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.14em;
-}
-.ghost-btn:hover { border-color: var(--hud); color: var(--hud); }
 
 /* ---- map area ---------------------------------------------------------- */
 .map-area { position: relative; flex: 1 1 auto; min-width: 0; }
@@ -214,9 +208,21 @@ body { background: var(--bg); color: var(--text); overflow: hidden; }
 }
 .panel-toggle:hover { color: var(--hud); }
 
-/* legend */
+/* reset-view control (top-right of the map, above the legend) */
+.map-reset {
+  position: absolute; top: 14px; right: 14px; z-index: 5;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(19,24,30,0.93); border: 1px solid var(--border); border-radius: 3px;
+  color: var(--text); cursor: pointer; padding: 7px 10px; backdrop-filter: blur(6px);
+  font-family: var(--font-display); font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em; transition: border-color 0.12s, color 0.12s;
+}
+.map-reset:hover { border-color: var(--hud); color: var(--hud); }
+.map-reset svg { display: block; }
+
+/* legend (sits below the reset control) */
 .legend {
-  position: absolute; top: 14px; right: 14px; background: rgba(19,24,30,0.93);
+  position: absolute; top: 56px; right: 14px; background: rgba(19,24,30,0.93);
   border: 1px solid var(--border); border-radius: 3px; font-size: 12px;
   backdrop-filter: blur(6px); z-index: 4; min-width: 150px;
 }
@@ -360,7 +366,7 @@ body { background: var(--bg); color: var(--text); overflow: hidden; }
 }
 
 /* ============================================================================
-   RESPONSIVE — below 860px the sidebar becomes a slide-over drawer and the
+   RESPONSIVE - below 860px the sidebar becomes a slide-over drawer and the
    always-on HUD overlays (legend, stats) collapse so they never cover the map.
    ============================================================================ */
 @media (max-width: 860px) {
@@ -383,7 +389,8 @@ body { background: var(--bg); color: var(--text); overflow: hidden; }
   .sidebar.open { transform: none; }
   .sidebar-backdrop { display: block; position: absolute; inset: 0; z-index: 35; background: rgba(5,7,12,0.55); backdrop-filter: blur(1px); }
 
-  .legend { top: 10px; right: 10px; min-width: 0; max-width: 56vw; }
+  .map-reset { top: 10px; right: 10px; padding: 6px 8px; }
+  .legend { top: 52px; right: 10px; min-width: 0; max-width: 56vw; }
   .stats-box { right: 10px; bottom: 70px; width: min(248px, 72vw); max-height: 44%; }
   .hotspots { top: 10px; left: 10px; width: min(210px, 60vw); }
   /* sit the (opt-in) survival curve above the stats band so the two bottom panels

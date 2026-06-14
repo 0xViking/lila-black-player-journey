@@ -382,7 +382,7 @@ export default function App() {
         >
           <span /><span /><span />
         </button>
-        <div className="brand" title="LILA BLACK — Player Journey Explorer">
+        <div className="brand" title="LILA BLACK - Player Journey Explorer">
           <span className="logo-mark"><Reticle /></span>
           <span className="wordmark">LILA&nbsp;BLACK</span>
           <span className="subtitle">Player Journey Explorer</span>
@@ -392,11 +392,11 @@ export default function App() {
           <span className="ops-readout">
             <b>{manifest.stats.files.toLocaleString()}</b> files · <b>{manifest.stats.rows.toLocaleString()}</b> rows ·{" "}
             <b>{manifest.stats.players}</b> players · <b>{manifest.stats.matches}</b> matches ·{" "}
-            <b>{Object.keys(manifest.maps).length}</b> maps · Feb 10–14
+            <b>{Object.keys(manifest.maps).length}</b> maps · Feb 10-14
           </span>
         </div>
         <div className="topbar-right">
-          <div className="live-stats" title={engaged ? "humans/bots still in the match + events so far, at the current time. kills/deaths include bot-vs-bot combat." : "humans + bots = journeys in the current selection (one player can play several matches — see the Stats box for unique players). kills/deaths include bot-vs-bot combat (PvE-heavy dataset)."}>
+          <div className="live-stats" title={engaged ? "humans/bots still in the match + events so far, at the current time. kills/deaths include bot-vs-bot combat." : "humans + bots = journeys in the current selection (one player can play several matches - see the Stats box for unique players). kills/deaths include bot-vs-bot combat (PvE-heavy dataset)."}>
             <Stat label="humans" value={liveStats.humans} color={HUMAN_COLOR} />
             <Stat label="bots" value={liveStats.bots} color={BOT_COLOR} />
             <span className="stat-sep" />
@@ -449,7 +449,6 @@ export default function App() {
           setTrailMode={setTrailMode}
           filteredCount={filteredJourneys.length}
           eventCount={filteredEvents.length}
-          onResetView={() => setFitNonce((n) => n + 1)}
         />
 
         <main className="map-area">
@@ -508,6 +507,20 @@ export default function App() {
           {loadingMap && <div className="map-loading">Loading {mapId}…</div>}
           {!loadingMap && prepared && filteredJourneys.length === 0 && (
             <div className="map-empty">No journeys match these filters.<br />Try clearing the date, match, or player-type filters.</div>
+          )}
+          {prepared && (
+            <button
+              className="map-reset"
+              onClick={() => setFitNonce((n) => n + 1)}
+              title="Reset view (fit the map)"
+              aria-label="Reset view"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M4 9V4h5" /><path d="M15 4h5v5" /><path d="M20 15v5h-5" /><path d="M9 20H4v-5" />
+              </svg>
+              Reset view
+            </button>
           )}
           <Legend />
           <Timeline

@@ -34,7 +34,7 @@ export default function Timeline(p: Props) {
         {p.stormWindow && p.maxTime > 0 && (
           <div
             className="storm-band"
-            title={`Storm deaths ${fmt(p.stormWindow.min)}–${fmt(p.stormWindow.max)} (median ${fmt(p.stormWindow.median)})`}
+            title={`Storm deaths ${fmt(p.stormWindow.min)}-${fmt(p.stormWindow.max)} (median ${fmt(p.stormWindow.median)})`}
             style={{ left: `${(p.stormWindow.min / p.maxTime) * 100}%`, width: `${Math.max(0.5, ((p.stormWindow.max - p.stormWindow.min) / p.maxTime) * 100)}%` }}
           />
         )}

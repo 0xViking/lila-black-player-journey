@@ -110,7 +110,7 @@ def main():
             xs = df["x"].to_numpy(dtype="float64")
             zs = df["z"].to_numpy(dtype="float64")
             ts = df["ts"].astype("int64").to_numpy() // 10**6
-        except Exception as ex:  # noqa: BLE001 — log and continue, don't crash the build
+        except Exception as ex:  # noqa: BLE001 - log and continue, don't crash the build
             print(f"  ! skipping {os.path.basename(f)}: {type(ex).__name__}: {ex}")
             skipped += 1
             continue
@@ -239,7 +239,7 @@ def main():
         print(f"  WARNING: skipped {skipped} unreadable/malformed file(s)")
     total_oob = sum(oob.values())
     if total_oob:
-        print(f"  WARNING: {total_oob} point(s) mapped outside [0,1] UV {dict(oob)} — "
+        print(f"  WARNING: {total_oob} point(s) mapped outside [0,1] UV {dict(oob)} - "
               f"check the per-map scale/origin in MAP_CFG")
     else:
         print(f"  UV check: OK - all {total_rows} points fall inside [0,1] for every map")

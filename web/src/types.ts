@@ -45,7 +45,7 @@ export interface MatchMeta {
   dur: number;
 }
 
-// [u, v, t] — u,v in 0..1 minimap space, t in seconds of match time
+// [u, v, t] - u,v in 0..1 minimap space, t in seconds of match time
 export type PathPoint = [number, number, number];
 
 export interface JourneyEvent {

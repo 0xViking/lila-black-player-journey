@@ -58,7 +58,7 @@ export default function SurvivalChart(p: Props) {
       </svg>
       <div className="sv-foot">
         <b style={{ color: "#38bdf8" }}>{aliveNow}</b> of {total} in match at {mmss(currentTime)}
-        {stormWindow ? <> · <span style={{ color: storm }}>storm {mmss(stormWindow.min)}–{mmss(stormWindow.max)}</span></> : null}
+        {stormWindow ? <> · <span style={{ color: storm }}>storm {mmss(stormWindow.min)}-{mmss(stormWindow.max)}</span></> : null}
       </div>
     </div>
   );

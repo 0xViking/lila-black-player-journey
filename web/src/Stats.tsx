@@ -14,12 +14,11 @@ export interface StatsData {
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
 const rgb = (c: number[]) => `rgb(${c[0]},${c[1]},${c[2]})`;
-const isNarrow = () => typeof window !== "undefined" && window.matchMedia("(max-width: 860px)").matches;
 
 interface Props { data: StatsData; live: boolean; onPick: (xy: [number, number], label: string) => void; }
 
 export default function Stats({ data, live, onPick }: Props) {
-  const [collapsed, setCollapsed] = useState(isNarrow);
+  const [collapsed, setCollapsed] = useState(true); // closed by default; click the header to open
   const toggle = () => setCollapsed((c) => !c);
   const Mile = ({ label, color, f }: { label: string; color: number[]; f: First | null }) =>
     f ? (
@@ -35,7 +34,7 @@ export default function Stats({ data, live, onPick }: Props) {
         </span>
       </div>
     ) : (
-      <div className="st-row muted"><span className="st-dot" style={{ background: rgb(color) }} /><span className="st-l">{label}</span><span className="st-v">{live ? "not yet" : "—"}</span></div>
+      <div className="st-row muted"><span className="st-dot" style={{ background: rgb(color) }} /><span className="st-l">{label}</span><span className="st-v">{live ? "not yet" : "-"}</span></div>
     );
   return (
     <div className={`stats-box ${collapsed ? "collapsed" : ""}`}>
@@ -61,7 +60,7 @@ export default function Stats({ data, live, onPick }: Props) {
         <div className="st-fact muted">
           <b>{data.journeys.toLocaleString()}</b> journeys · {data.humans.toLocaleString()} human, {data.bots.toLocaleString()} bot
         </div>
-        <div className="st-fact muted" title="Distinct players in this selection — one player can appear in several matches, so this is ≤ the journey count.">
+        <div className="st-fact muted" title="Distinct players in this selection - one player can appear in several matches, so this is ≤ the journey count.">
           <b>{(data.uniqueHumans + data.uniqueBots).toLocaleString()}</b> unique players · {data.uniqueHumans.toLocaleString()} human, {data.uniqueBots.toLocaleString()} bot
         </div>
       </div>
